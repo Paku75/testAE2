@@ -3,44 +3,172 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
-    {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		<title>{% block title %}ALUMNI ITIC PARIS!{% endblock %}</title>
+       <link rel="shortcut icon" type="image/x-icon" href="{{ app.request.getBaseURL() }}/assets/img/favicon.png">
+ {% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/assets/css/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/assets/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/assets/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/assets/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/assets/plugins/morris/morris.css">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/assets/css/style.css">
+    <!--[if lt IE 9]>
+		<script src="{{ app.request.getBaseURL() }}/assets/js/html5shiv.min.js"></script>
+		<script src="{{ app.request.getBaseURL() }}/assets/js/respond.min.js"></script>
+	<![endif]-->{% endblock %}
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Communitic</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
-            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+       <div class="main-wrapper">
+        <div class="header">
+            <div class="header-left">
+                <a href="/" class="logo">
+                    <img src="{{ app.request.getBaseURL() }}/assets/img/logo.png" width="40" height="40" alt="">
+                </a>
+            </div>
+            <div class="page-title-box pull-left">
+                <h3>ALumni ITIC Paris</h3>
+            </div>
+            <a id="mobile_btn" class="mobile_btn pull-left" href="#sidebar"><i class="fa fa-bars" aria-hidden="true"></i></a>
+            <ul class="nav navbar-nav navbar-right user-menu pull-right">
+                <li class="dropdown hidden-xs">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i> <span class="badge bg-primary pull-right">3</span></a>
+                    <div class="dropdown-menu notifications">
+                        <div class="topnav-dropdown-header">
+                            <span>Notifications</span>
+                        </div>
+                        <div class="drop-scroll">
+                            <ul class="media-list">
+                                <li class="media notification-message">
+                                    <a href="activities.html">
+                                        <div class="media-left">
+                                            <span class="avatar">
+												<img alt="John Doe" src="{{ app.request.getBaseURL() }}/assets/img/user.jpg" class="img-responsive img-circle">
+											</span>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
+                                            <p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="media notification-message">
+                                    <a href="activities.html">
+                                        <div class="media-left">
+                                            <span class="avatar">V</span>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
+                                            <p class="noti-time"><span class="notification-time">6 mins ago</span></p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="media notification-message">
+                                    <a href="activities.html">
+                                        <div class="media-left">
+                                            <span class="avatar">L</span>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
+                                            <p class="noti-time"><span class="notification-time">8 mins ago</span></p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="media notification-message">
+                                    <a href="activities.html">
+                                        <div class="media-left">
+                                            <span class="avatar">G</span>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
+                                            <p class="noti-time"><span class="notification-time">12 mins ago</span></p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="media notification-message">
+                                    <a href="activities.html">
+                                        <div class="media-left">
+                                            <span class="avatar">V</span>
+                                        </div>
+                                        <div class="media-body">
+                                            <p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
+                                            <p class="noti-time"><span class="notification-time">2 days ago</span></p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="topnav-dropdown-footer">
+                            <a href="activities.html">View all Notifications</a>
+                        </div>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/blog">Posts</a>
+                <li class="dropdown hidden-xs">
+                    <a href="javascript:;" id="open_msg_box" class="hasnotifications"><i class="fa fa-comment-o"></i> <span class="badge bg-primary pull-right">8</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                <li class="dropdown">
+                    <a href="profile.html" class="dropdown-toggle user-link" data-toggle="dropdown" title="Admin">
+                        <span class="user-img"><img class="img-circle" src="{{ app.request.getBaseURL() }}/assets/img/user.jpg" width="40" alt="Admin">
+							<span class="status online"></span></span>
+                        <span>Admin</span>
+                        <i class="caret"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="profile.html">My Profile</a></li>
+                        <li><a href="edit-profile.html">Edit Profile</a></li>
+                        <li><a href="settings.html">Settings</a></li>
+                        <li><a href="login.html">Logout</a></li>
+                    </ul>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <div class="dropdown mobile-user-menu pull-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                <ul class="dropdown-menu pull-right">
+                    <li><a href="profile.html">My Profile</a></li>
+                    <li><a href="edit-profile.html">Edit Profile</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                    <li><a href="login.html">Logout</a></li>
+                </ul>
+            </div>
         </div>
-    </nav>
-    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">Main</li>
+                        <li class="active">
+                            <a href="/"><i class="fa fa-dashboard"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="etudiants"><i class="fa fa-users" aria-hidden="true"></i> Etudiants</a>
+                        </li>
+						<li>
+                            <a href="blog"><i class="fa fa-comment-dots" aria-hidden="true"></i> Blog</a>
+                        </li>
+						</ul>
+                </div>
+            </div>
+        </div>
+    
         {% block body %}{% endblock %}
-    </div>
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+	 <div class="sidebar-overlay" data-reff=""></div>
+    <script type="text/javascript" src="{{ app.request.getBaseURL() }}/assets/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="{{ app.request.getBaseURL() }}/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ app.request.getBaseURL() }}/assets/js/jquery.slimscroll.js"></script>
+    <script type="text/javascript" src="{{ app.request.getBaseURL() }}/assets/js/select2.min.js"></script>
+    <script type="text/javascript" src="{{ app.request.getBaseURL() }}/assets/js/moment.min.js"></script>
+    <script type="text/javascript" src="{{ app.request.getBaseURL() }}/assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="{{ app.request.getBaseURL() }}/assets/plugins/morris/morris.min.js"></script>
+    <script type="text/javascript" src="{{ app.request.getBaseURL() }}/assets/plugins/raphael/raphael-min.js"></script>
+    <script type="text/javascript" src="{{ app.request.getBaseURL() }}/assets/js/app.js"></script>
+	{% endblock %}
+	
 </body>
 
 </html>

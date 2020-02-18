@@ -3,11 +3,12 @@
 {% form_theme formArticle 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-
+ <div class="page-wrapper">
+            <div class="content container-fluid">
     {% if editMode %}
-        <h1>Modifier d'un article</h1>
+        <h1>Modifier un article</h1>
     {% else %}
-        <h1>Création d'un article</h1>
+        <h1>Créer un article</h1>
     {% endif %}
 
     {{ form_start(formArticle) }}
@@ -26,5 +27,6 @@
 
     {{ form_end(formArticle) }}
 
-
+</div>
+</div>
 {% endblock %}
