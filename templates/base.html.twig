@@ -20,14 +20,15 @@
     <!--[if lt IE 9]>
 		<script src="{{ app.request.getBaseURL() }}/assets/js/html5shiv.min.js"></script>
 		<script src="{{ app.request.getBaseURL() }}/assets/js/respond.min.js"></script>
-	<![endif]-->{% endblock %}
+	<![endif]-->
+{% endblock %}
 </head>
 
 <body>
        <div class="main-wrapper">
         <div class="header">
             <div class="header-left">
-                <a href="/" class="logo">
+                <a href="{{ app.request.getBaseURL() }}/" class="logo">
                     <img src="{{ app.request.getBaseURL() }}/assets/img/logo.png" width="40" height="40" alt="">
                 </a>
             </div>
@@ -142,13 +143,13 @@
                     <ul>
                         <li class="menu-title">Main</li>
                         <li class="active">
-                            <a href="/"><i class="fa fa-dashboard"></i> Dashboard</a>
+                            <a href="{{ app.request.getBaseURL() }}/"><i class="fa fa-dashboard"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="etudiants"><i class="fa fa-users" aria-hidden="true"></i> Etudiants</a>
+                            <a href="{{ app.request.getBaseURL() }}/"><i class="fa fa-users" aria-hidden="true"></i> Etudiants</a>
                         </li>
 						<li>
-                            <a href="blog"><i class="fa fa-comment-dots" aria-hidden="true"></i> Blog</a>
+                            <a href="{{path('blog')}}"><i class="fa fa-commenting-o" aria-hidden="true"></i> Blog</a>
                         </li>
 						</ul>
                 </div>

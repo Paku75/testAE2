@@ -1,10 +1,8 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     19/02/2020 13:29:03                          */
+/* Created on:     20/02/2020 14:35:16                          */
 /*==============================================================*/
 
-
-drop table if exists APPARTENIR2;
 
 drop table if exists CLASSE;
 
@@ -14,13 +12,13 @@ drop table if exists CONSERNER;
 
 drop table if exists CONSULTER;
 
-drop table if exists EST_INSCRIT_DANS;
-
 drop table if exists ETUDIANT;
 
 drop table if exists FILIERE;
 
 drop table if exists FORUM;
+
+drop table if exists INSCRIT;
 
 drop table if exists OFFRE;
 
@@ -35,16 +33,6 @@ drop table if exists TYPEOFFRE;
 drop table if exists TYPEUSER;
 
 drop table if exists USER;
-
-/*==============================================================*/
-/* Table: APPARTENIR2                                           */
-/*==============================================================*/
-create table APPARTENIR2
-(
-   IDFILIERE            int not null,
-   IDPROMOTION          int not null,
-   primary key (IDFILIERE, IDPROMOTION)
-);
 
 /*==============================================================*/
 /* Table: CLASSE                                                */
@@ -91,16 +79,6 @@ create table CONSULTER
 );
 
 /*==============================================================*/
-/* Table: EST_INSCRIT_DANS                                      */
-/*==============================================================*/
-create table EST_INSCRIT_DANS
-(
-   IDCLASSE             int not null,
-   IDETUDIANT           int not null,
-   primary key (IDCLASSE, IDETUDIANT)
-);
-
-/*==============================================================*/
 /* Table: ETUDIANT                                              */
 /*==============================================================*/
 create table ETUDIANT
@@ -142,6 +120,18 @@ create table FORUM
    DESCRIPTION          text,
    IMAGE                varchar(255),
    primary key (IDFORUM)
+);
+
+/*==============================================================*/
+/* Table: INSCRIT                                               */
+/*==============================================================*/
+create table INSCRIT
+(
+   IDFILIERE            int not null,
+   IDPROMOTION          int not null,
+   IDETUDIANT           int not null,
+   IDCLASSE             int not null,
+   primary key (IDFILIERE, IDPROMOTION, IDETUDIANT, IDCLASSE)
 );
 
 /*==============================================================*/
@@ -225,12 +215,6 @@ create table USER
    primary key (IDUSER)
 );
 
-alter table APPARTENIR2 add constraint FK_APPARTENIR2 foreign key (IDFILIERE)
-      references FILIERE (IDFILIERE) on delete restrict on update restrict;
-
-alter table APPARTENIR2 add constraint FK_APPARTENIR3 foreign key (IDPROMOTION)
-      references PROMOTION (IDPROMOTION) on delete restrict on update restrict;
-
 alter table CLASSE add constraint FK_APPARTENIR foreign key (IDFILIERE)
       references FILIERE (IDFILIERE) on delete restrict on update restrict;
 
@@ -252,11 +236,17 @@ alter table CONSULTER add constraint FK_CONSULTER foreign key (IDETUDIANT)
 alter table CONSULTER add constraint FK_CONSULTER2 foreign key (IDOFFRE)
       references OFFRE (IDOFFRE) on delete restrict on update restrict;
 
-alter table EST_INSCRIT_DANS add constraint FK_EST_INSCRIT_DANS foreign key (IDCLASSE)
-      references CLASSE (IDCLASSE) on delete restrict on update restrict;
+alter table INSCRIT add constraint FK_INSCRIT foreign key (IDFILIERE)
+      references FILIERE (IDFILIERE) on delete restrict on update restrict;
 
-alter table EST_INSCRIT_DANS add constraint FK_EST_INSCRIT_DANS2 foreign key (IDETUDIANT)
+alter table INSCRIT add constraint FK_INSCRIT2 foreign key (IDPROMOTION)
+      references PROMOTION (IDPROMOTION) on delete restrict on update restrict;
+
+alter table INSCRIT add constraint FK_INSCRIT3 foreign key (IDETUDIANT)
       references ETUDIANT (IDETUDIANT) on delete restrict on update restrict;
+
+alter table INSCRIT add constraint FK_INSCRIT4 foreign key (IDCLASSE)
+      references CLASSE (IDCLASSE) on delete restrict on update restrict;
 
 alter table OFFRE add constraint FK_APPARTENIR33 foreign key (IDTYPEOFFRE)
       references TYPEOFFRE (IDTYPEOFFRE) on delete restrict on update restrict;
