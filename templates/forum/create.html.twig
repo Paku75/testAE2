@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formForum 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+ <div class="page-wrapper">
+            <div class="content container-fluid">
+    {% if editMode %}
+        <h1>Modifier un forum</h1>
+    {% else %}
+        <h1>Créer un forum</h1>
+    {% endif %}
+
+    {{ form_start(formForum) }}
+
+    {{ form_row(formForum.NOM, {'attr': {'placeholder': "Titre de l'forum"}}) }}
+    {{ form_row(formForum.DESCRIPTION, {'attr': {'placeholder': "Contenu de l'forum"}}) }}
+    {{ form_row(formForum.IMAGE, {'attr': {'placeholder': "URL de l'image"}}) }}
+
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+            Enregistrer la modification
+        {% else %}
+            Ajouter le forum
+        {% endif %}
+    </button>
+
+    {{ form_end(formForum) }}
+
+</div>
+</div>
+{% endblock %}

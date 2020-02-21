@@ -3,40 +3,49 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * Article
+ *
+ * @ORM\Table(name="article")
+ * @ORM\Entity
  */
 class Article
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min=10, max=255, minMessage="Votre titre est bien trop court")
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=false)
      */
     private $title;
 
     /**
-     * @ORM\Column(type="text")
-     * @Assert\Length(min=10, minMessage="Votre contenu est bien trop court")
+     * @var string
+     *
+     * @ORM\Column(name="content", type="text", length=0, nullable=false)
      */
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Url()
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=false)
      */
     private $image;
 
     /**
-     * @ORM\Column( type="datetime")
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
 
@@ -92,4 +101,6 @@ class Article
 
         return $this;
     }
+
+
 }
